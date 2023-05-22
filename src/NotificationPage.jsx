@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
 
@@ -63,7 +61,7 @@ function NotificationPage() {
 
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
+      <form className='noti-form' onSubmit={handleSubmit}>
         <input name='title' value={formData.title} onChange={handleTitleChange} type="text" placeholder='Enter title' />
         <input name='message' value={formData.message} onChange={handleMessageChange} type="text" placeholder='Enter message' />
         <input name='screen' value={formData.data.screen} onChange={handleInputChange} type="text" placeholder='Enter screen' />
