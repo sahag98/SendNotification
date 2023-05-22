@@ -8,7 +8,7 @@ import NotificationPage from './NotificationPage'
 function App() {
   const [secretCode, setSecretCode] = useState('')
   const [accessGranted, setAccessGranted] = useState(false)
-  console.log(import.meta.env.VITE_SECRET_KEY)
+
   function handleSecret() {
     if (secretCode == import.meta.env.VITE_SECRET_KEY) {
       setAccessGranted(true)
