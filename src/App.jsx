@@ -5,7 +5,7 @@ import NotificationPage from './NotificationPage'
 function App() {
   const [secretCode, setSecretCode] = useState('')
   const [accessGranted, setAccessGranted] = useState(false)
-
+  console.log('hey')
   return (
     <div className="App">
       {secretCode != import.meta.env.VITE_SECRET_KEY ?
