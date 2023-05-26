@@ -3,13 +3,13 @@ import './App.css'
 import axios from 'axios'
 
 function NotificationPage() {
-  const [count, setCount] = useState(0)
   const [tokens, setTokens] = useState([])
   const [formData, setFormData] = useState({ title: '', message: '', data: { screen: '', updateLink: '' } });
 
   useEffect(() => {
+    console.log(import.meta.env.VITE_API_TOKENS)
     const fetchTokens = async () => {
-      const res = await axios.get('https://prayse.herokuapp.com/tokens')
+      const res = await axios.get(import.meta.env.VITE_API_TOKENS)
       setTokens(res.data)
     }
     fetchTokens()
@@ -46,7 +46,7 @@ function NotificationPage() {
   function handleSubmit(e) {
     e.preventDefault()
     console.log(formData)
-    axios.post('https://prayse.herokuapp.com/message', {
+    axios.post(import.meta.env.VITE_API_MESSAGE, {
       headers: {
         Accept: 'application/json',
         'Accept-encoding': 'gzip, deflate',
@@ -54,7 +54,11 @@ function NotificationPage() {
       },
       body: formData,
     })
-    setFormData({ title: '', message: '', data: { screen: '', updateLink: '' } })
+    setFormData({
+      title: '',
+      message: '',
+      data: { screen: '', updateLink: '' }
+    })
   }
 
   console.log(formData)
@@ -62,10 +66,34 @@ function NotificationPage() {
   return (
     <div className="App">
       <form className='noti-form' onSubmit={handleSubmit}>
-        <input name='title' value={formData.title} onChange={handleTitleChange} type="text" placeholder='Enter title' />
-        <input name='message' value={formData.message} onChange={handleMessageChange} type="text" placeholder='Enter message' />
-        <input name='screen' value={formData.data.screen} onChange={handleInputChange} type="text" placeholder='Enter screen' />
-        <input name='updateLink' value={formData.data.updateLink} onChange={handleInputChange} type="text" placeholder='new update?' />
+        <input
+          name='title'
+          value={formData.title}
+          onChange={handleTitleChange}
+          type="text"
+          placeholder='Enter title'
+        />
+        <input
+          name='message'
+          value={formData.message}
+          onChange={handleMessageChange}
+          type="text"
+          placeholder='Enter message'
+        />
+        <input
+          name='screen'
+          value={formData.data.screen}
+          onChange={handleInputChange}
+          type="text"
+          placeholder='Enter screen'
+        />
+        <input
+          name='updateLink'
+          value={formData.data.updateLink}
+          onChange={handleInputChange}
+          type="text"
+          placeholder='new update?'
+        />
         <button type='submit'>Send notification</button>
       </form>
       <div className='count'>
