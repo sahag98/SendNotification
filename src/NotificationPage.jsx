@@ -7,7 +7,6 @@ function NotificationPage() {
   const [formData, setFormData] = useState({ title: '', message: '', data: { screen: '', updateLink: '' } });
 
   useEffect(() => {
-    console.log(import.meta.env.VITE_API_TOKENS)
     const fetchTokens = async () => {
       const res = await axios.get(import.meta.env.VITE_API_TOKENS)
       setTokens(res.data)
@@ -45,7 +44,6 @@ function NotificationPage() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(formData)
     axios.post(import.meta.env.VITE_API_MESSAGE, {
       headers: {
         Accept: 'application/json',
@@ -60,8 +58,6 @@ function NotificationPage() {
       data: { screen: '', updateLink: '' }
     })
   }
-
-  console.log(formData)
 
   return (
     <div className="App">
