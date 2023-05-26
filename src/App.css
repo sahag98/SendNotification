@@ -26,11 +26,11 @@ form {
 input {
   /* width: 100%; */
   border-radius: 10px;
-  height: 45px;
+  height: 50px;
 }
 
 button {
-  height: 45px;
+  height: 60px;
 }
 
 .logo {
