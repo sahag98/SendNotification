@@ -1,25 +1,28 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import "./App.css";
+import axios from "axios";
 
 function NotificationPage() {
-  const [tokens, setTokens] = useState([])
-  const [formData, setFormData] = useState({ title: '', message: '', data: { screen: '', updateLink: '' } });
+  const [tokens, setTokens] = useState([]);
+  const [formData, setFormData] = useState({
+    title: "",
+    message: "",
+    data: { screen: "", updateLink: "", anyLink: "" },
+  });
 
   useEffect(() => {
     const fetchTokens = async () => {
-      const res = await axios.get(import.meta.env.VITE_API_TOKENS)
-      setTokens(res.data)
-    }
-    fetchTokens()
-
-  }, [])
+      const res = await axios.get(import.meta.env.VITE_API_TOKENS);
+      setTokens(res.data);
+    };
+    fetchTokens();
+  }, []);
 
   const handleTitleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -27,7 +30,7 @@ function NotificationPage() {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -37,67 +40,83 @@ function NotificationPage() {
       ...prevData,
       data: {
         ...prevData.data,
-        [name]: value
-      }
+        [name]: value,
+      },
     }));
-  }
+  };
 
   function handleSubmit(e) {
-    e.preventDefault()
-    axios.post(import.meta.env.VITE_API_MESSAGE, {
+    e.preventDefault();
+
+    if (!formData.title || !formData.message || !formData.data.screen) {
+      return;
+    }
+
+    axios.post(import.meta.env.VITE_API_TEST_MESSAGE, {
       headers: {
-        Accept: 'application/json',
-        'Accept-encoding': 'gzip, deflate',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Accept-encoding": "gzip, deflate",
+        "Content-Type": "application/json",
       },
       body: formData,
-    })
+    });
     setFormData({
-      title: '',
-      message: '',
-      data: { screen: '', updateLink: '' }
-    })
+      title: "",
+      message: "",
+      data: { screen: "", updateLink: "", anyLink: "" },
+    });
   }
 
   return (
     <div className="App">
-      <form className='noti-form' onSubmit={handleSubmit}>
+      <form className="noti-form" onSubmit={handleSubmit}>
         <input
-          name='title'
+          name="title"
           value={formData.title}
+          required
           onChange={handleTitleChange}
           type="text"
-          placeholder='Enter title'
+          placeholder="Enter title"
         />
+
         <input
-          name='message'
+          name="message"
           value={formData.message}
+          required
           onChange={handleMessageChange}
           type="text"
-          placeholder='Enter message'
+          placeholder="Enter message"
         />
         <input
-          name='screen'
+          name="screen"
           value={formData.data.screen}
+          required
           onChange={handleInputChange}
           type="text"
-          placeholder='Enter screen'
+          placeholder="Enter screen"
         />
         <input
-          name='updateLink'
+          name="anyLink"
+          value={formData.data.anyLink}
+          onChange={handleInputChange}
+          type="text"
+          placeholder="Enter any link..."
+        />
+        <input
+          name="updateLink"
           value={formData.data.updateLink}
           onChange={handleInputChange}
           type="text"
-          placeholder='new update?'
+          placeholder="new update?"
         />
-        <button type='submit'>Send notification</button>
+        <button type="submit">Send notification</button>
       </form>
-      <div className='count'>
+      <div className="count">
         <h3>Subscriber count:</h3>
         <span> {tokens.length}</span>
       </div>
     </div>
-  )
+  );
 }
 
-export default NotificationPage
+export default NotificationPage;
