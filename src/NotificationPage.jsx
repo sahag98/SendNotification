@@ -15,7 +15,7 @@ function NotificationPage() {
       const res = await axios.get(import.meta.env.VITE_API_TOKENS, {
         headers: {
           // Replace 'your_secret_api_key' with the actual key you're using
-          "x-api-key": "secretkey",
+          "x-api-key": import.meta.env.VITE_API_SECRET,
         },
       });
       setTokens(res.data);
