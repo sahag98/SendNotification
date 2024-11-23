@@ -12,7 +12,12 @@ function NotificationPage() {
 
   useEffect(() => {
     const fetchTokens = async () => {
-      const res = await axios.get(import.meta.env.VITE_API_TOKENS);
+      const res = await axios.get(import.meta.env.VITE_API_TOKENS, {
+        headers: {
+          // Replace 'your_secret_api_key' with the actual key you're using
+          "x-api-key": "secretkey",
+        },
+      });
       setTokens(res.data);
     };
     fetchTokens();
@@ -52,7 +57,7 @@ function NotificationPage() {
       return;
     }
 
-    axios.post(import.meta.env.VITE_API_MESSAGE, {
+    axios.post(import.meta.env.VITE_API_TEST_MESSAGE, {
       headers: {
         Accept: "application/json",
         "Accept-encoding": "gzip, deflate",
