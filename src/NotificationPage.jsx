@@ -57,7 +57,7 @@ function NotificationPage() {
       return;
     }
 
-    axios.post(import.meta.env.VITE_API_TEST_MESSAGE, {
+    axios.post(import.meta.env.VITE_API_MESSAGE, {
       headers: {
         Accept: "application/json",
         "Accept-encoding": "gzip, deflate",
