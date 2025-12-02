@@ -61,3 +61,156 @@ button {
 .read-the-docs {
   color: #888;
 }
+
+/* Schedule Section Styles */
+.schedule-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #2a2a4a;
+}
+
+.schedule-section h4 {
+  margin: 0 0 1rem 0;
+  color: #e0e0e0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.schedule-inputs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.schedule-field {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.schedule-field label {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.schedule-field select {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #3a3a5a;
+  background: #0f0f1a;
+  color: #fff;
+  padding: 0 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.schedule-field select:hover {
+  border-color: #6366f1;
+}
+
+.schedule-field select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Scheduled Notifications List */
+.scheduled-list {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #2a2a4a;
+}
+
+.scheduled-list h3 {
+  margin: 0 0 1rem 0;
+  color: #e0e0e0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.scheduled-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.no-scheduled {
+  color: #6a6a8a;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.scheduled-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #2a2a4a;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.scheduled-item:hover {
+  border-color: #4a4a6a;
+}
+
+.scheduled-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.scheduled-info strong {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.scheduled-info p {
+  margin: 0;
+  color: #b0b0c0;
+  font-size: 0.9rem;
+}
+
+.scheduled-time {
+  color: #6366f1;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.scheduled-screen {
+  color: #6a6a8a;
+  font-size: 0.8rem;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  height: auto;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #ef4444;
+  color: #fff;
+}
